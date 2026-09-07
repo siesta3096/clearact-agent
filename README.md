@@ -17,7 +17,7 @@ ClearAct 是一个本地优先、可审查的轻量 Agent Runtime。模型只能
 在全新的 Python 环境中安装项目（安装后才会注册 `clearact` 命令）：
 
 ```powershell
-cd E:\agent
+cd clearact
 python -m pip install -e ".[dev]"
 ```
 
