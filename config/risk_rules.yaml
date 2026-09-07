@@ -1,0 +1,17 @@
+limits:
+  yellow_batch_file_count: 20
+  hard_stop_delete_file_count: 50
+
+sensitive_path_patterns:
+  - "C:\\Windows\\**"
+  - "C:\\Program Files\\**"
+  - "**\\.ssh\\**"
+  - "**\\.env"
+  - "**\\AppData\\**"
+
+hard_stop_operations:
+  - send_email
+  - publish_content
+  - payment
+  - git_push
+  - modify_system_configuration

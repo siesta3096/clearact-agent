@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+.env
+clearact.json
+data/runs/*
+!data/runs/.gitkeep
+data/checkpoints/*
+!data/checkpoints/.gitkeep
+data/artifacts/*
+!data/artifacts/.gitkeep
+data/snapshots/*
+!data/snapshots/.gitkeep

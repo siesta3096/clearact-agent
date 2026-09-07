@@ -1,0 +1,26 @@
+tools:
+  list_files:
+    stage: collect
+    display_name: 扫描文件
+    progress_template: "正在扫描：{path}"
+    base_risk: white
+  read_file:
+    stage: collect
+    display_name: 读取文件
+    progress_template: "正在读取：{path}"
+    base_risk: white
+  write_file:
+    stage: act
+    display_name: 更新文件
+    progress_template: "正在更新：{path}"
+    base_risk: green
+  web_search:
+    stage: collect
+    display_name: 搜索公开资料
+    progress_template: "正在搜索：{query}"
+    base_risk: white
+  fetch_url:
+    stage: collect
+    display_name: 读取网页
+    progress_template: "正在读取：{url}"
+    base_risk: white
