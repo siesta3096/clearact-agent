@@ -115,7 +115,10 @@ async def get_settings() -> dict:
     with (root / "clearact.json").open(encoding="utf-8") as handle:
         raw = json.load(handle)
     profiles = {
-        name: {key: value for key, value in profile.items() if key not in {"apiKey", "apiKeyEnv"}}
+        name: {
+            **{key: value for key, value in profile.items() if key not in {"apiKey", "apiKeyEnv"}},
+            "hasApiKey": bool(profile.get("apiKey", "")),
+        }
         for name, profile in raw["profiles"].items()
     }
     return {
@@ -143,6 +146,9 @@ async def update_settings(request: SettingsRequest) -> dict:
         for key in ("provider", "model", "baseUrl", "contextWindow"):
             if key in update:
                 raw["profiles"][name][key] = update[key]
+        # API Key：非空则更新，空或缺失则保留原值
+        if update.get("apiKey"):
+            raw["profiles"][name]["apiKey"] = update["apiKey"]
     raw["defaultProfile"] = request.default_profile
     raw["policy"]["defaultAutonomy"] = request.default_autonomy.value
     raw.setdefault("web", {})["interfaceLanguage"] = request.interface_language
